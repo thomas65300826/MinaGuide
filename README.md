@@ -127,3 +127,36 @@ export MINA_PUBLIC_KEY=<YOUR-PUBLIC-KEY>
 export CODA_PUBLIC_KEY=<YOUR-PUBLIC-KEY>
 ```
 ## 发送转账
+1. 先解锁你的账户
+```
+coda accounts unlock -public-key $MINA_PUBLIC_KEY
+```
+2. 使用以下命令发送转账
+```
+coda client send-payment \
+  -amount 0.5 \
+  -receiver B62qndJi5mnRoBZ8SAYDM1oR2SgAk5WpZC8hGpJUZ4e64kDHGbFMeLJ \
+  -fee 0.1 \
+  -sender $MINA_PUBLIC_KEY
+ ```
+* ```amount``` 为你发送的Mina数量
+* ```receiver``` 为对方的地址
+* ```fee``` 为你为这笔转账支付的网络费用
+* ```sender``` 为你自己的公钥地址
+发送完转账，你会看到类似以下的输出信息
+```
+Dispatched payment with ID 3XCgvAHLAqz9VVbU7an7f2L5ffJtZoFega7jZpVJrPCYA4j5HEmUAx51BCeMc232eBWVz6q9t62Kp2cNvQZoNCSGqJ1rrJpXFqMN6NQe7x987sAC2Sd6wu9Vbs9xSr8g1AkjJoB65v3suPsaCcvvCjyUvUs8c3eVRucH4doa2onGj41pjxT53y5ZkmGaPmPnpWzdJt4YJBnDRW1GcJeyqj61GKWcvvrV6KcGD25VEeHQBfhGppZc7ewVwi3vcUQR7QFFs15bMwA4oZDEfzSbnr1ECoiZGy61m5LX7afwFaviyUwjphtrzoPbQ2QAZ2w2ypnVUrcJ9oUT4y4dvDJ5vkUDazRdGxjAA6Cz86bJqqgfMHdMFqpkmLxCdLbj2Nq3Ar2VpPVvfn2kdKoxwmAGqWCiVhqYbTvHkyZSc4n3siGTEpTGAK9usPnBnqLi53Z2bPPaJ3PuZTMgmdZYrRv4UPxztRtmyBz2HdQSnH8vbxurLkyxK6yEwS23JSZWToccM83sx2hAAABNynBVuxagL8aNZF99k3LKX6E581uSVSw5DAJ2S198DvZHXD53QvjcDGpvB9jYUpofkk1aPvtW7QZkcofBYruePM7kCHjKvbDXSw2CV5brHVv5ZBV9DuUcuFHfcYAA2TVuDtFeNLBjxDumiBASgaLvcdzGiFvSqqnzmS9MBXxYybQcmmz1WuKZHjgqph99XVEapwTsYfZGi1T8ApahcWc5EX9
+Receipt chain hash is now A3gpLyBJGvcpMXny2DsHjvE5GaNFn2bbpLLQqTCHuY3Nd7sqy8vDbM6qHTwHt8tcfqqBkd36LuV4CC6hVH6YsmRqRp4Lzx77WnN9gnRX7ceeXdCQUVB7B2uMo3oCYxfdpU5Q2f2KzJQ46
+```
+## 设置SNARK工作
+使用以下命令可以设置SNARk工人
+```
+coda client set-snark-work-fee <FEE>
+coda client set-snark-worker -address $MINA_PUBLIC_KEY
+```
+其中```FEE```为你设置的SNARK的价格.
+
+
+## 其他信息链接
+Mina区块浏览器 - minaexplorer.com
+官方网站 - minaprotocol.com
