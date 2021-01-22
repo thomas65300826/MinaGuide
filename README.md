@@ -79,11 +79,51 @@ sudo loginctl enable-linger
 ```
 以下命令可以用来跟Mina交互：
 * 查看Mina运行状态
-``` systemctl --user status mina ```
+``` 
+systemctl --user status mina 
+```
 * 停止运行Mina
-``` systemctl --user stop mina ```
+``` 
+systemctl --user stop mina 
+```
 * 重启动Mina
-``` systemctl --user restart mina ```
+``` 
+systemctl --user restart mina 
+```
 * 查看运行日子
-``` journalctl --user -u mina -n 1000 -f ```
-## 查看
+``` 
+journalctl --user -u mina -n 1000 -f 
+```
+## 查看节点连接状态
+使用以下命令查看连接状态
+```
+coda client status
+```
+很可能会看到以下信息
+```
+...
+Peers:                                         Total: 4 (...)
+...
+Sync Status:                                   Bootstrap
+```
+再等待一段时间，你就可以看到节点同步的信号。
+```
+Sync Status: Synced
+```
+
+## 导入账号
+使用以下命令导入之前下载的私钥
+```
+coda accounts import -privkey-path ~/keys/my-wallet
+```
+输入密码后，你会看到以下输出信息
+```
+Imported account!
+Public key: B62qjaA4N9843FKM5FZk1HmeuDiojG42cbCDyZeUDQVjycULte9PFkC
+```
+将Mina的地址写入环境变量,替换 ```<YOUR-PUBLIC-KEY> ```为你的公钥地址。
+```
+export MINA_PUBLIC_KEY=<YOUR-PUBLIC-KEY>
+export CODA_PUBLIC_KEY=<YOUR-PUBLIC-KEY>
+```
+## 发送转账
