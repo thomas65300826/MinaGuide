@@ -77,3 +77,13 @@ systemctl --user start mina
 systemctl --user enable mina
 sudo loginctl enable-linger
 ```
+以下命令可以用来跟Mina交互：
+* 查看Mina运行状态
+``` systemctl --user status mina ```
+* 停止运行Mina
+``` systemctl --user stop mina ```
+* 重启动Mina
+``` systemctl --user restart mina ```
+* 查看运行日子
+``` journalctl --user -u mina -n 1000 -f ```
+## 查看
